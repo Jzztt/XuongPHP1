@@ -118,14 +118,14 @@
         </thead>
         <tbody>
             <?php foreach ($listUser as $user) : ?>
-            <tr>
-                <td><?= $user["id"] ?></td>
-                <td><?= $user["name"] ?></td>
-                <td><?= $user["age"] ?></td>
-                <td><?= $user["address"] ?></td>
-                <td> <img src="../../../public/assets/avatar/<?= $user["avatar"] ?>" width="100" height="100" alt="">
-                </td>
-            </tr>
+                <tr>
+                    <td><?= $user["id"] ?></td>
+                    <td><?= $user["name"] ?></td>
+                    <td><?= $user["age"] ?></td>
+                    <td><?= $user["address"] ?></td>
+                    <td> <img src="../../../public/assets/avatar/<?= $user["avatar"] ?>" width="100" height="100" alt="">
+                    </td>
+                </tr>
             <?php endforeach; ?>
 
 
