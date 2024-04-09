@@ -3,24 +3,18 @@
 <?php
 $listProduct = [
     [
-        "productName" => "Apple MacBook Pro 17",
-        "color" => "Silver",
-        "category" => "Laptop",
-        "price" => "$2999"
-    ],
-    [
-        "productName" => "  Microsoft Surface Pro",
-        "color" => "White",
-        "category" => "Laptop PC",
-        "price" => "$1999"
-    ],
-    [
-        "productName" => "Apple MacBook Pro 17",
-        "color" => "Silver",
+        "productName" => "Magic Mouse 2",
+        "color" => "Black",
         "category" => "Accessories",
-        "price" => "$99"
+        "price" => 99
+    ],
+    [
+        "productName" => "iPhone 9",
+        "color" => "Black",
+        "category" => "Accessories",
+        "price" => 99
     ]
-]
+];
 
 
 ?>
@@ -55,7 +49,8 @@ $listProduct = [
                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
                         <?php foreach ($product as $key => $value) : ?>
                         <?php if ($key == "productName") : ?>
-                        <th class="px-6 py-4"><?= $value ?></th>
+                        <th class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white"><?= $value ?>
+                        </th>
                         <?php endif ?>
                         <?php if ($key !== "productName") : ?>
                         <td class="px-6 py-4"><?= $value ?></td>
