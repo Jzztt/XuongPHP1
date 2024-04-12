@@ -25,15 +25,23 @@
                     </svg>
                     <span class="sr-only">Search</span>
                 </button>
+
                 <div class="relative hidden md:block">
-                    <div class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
-                        <span class="sr-only">Search icon</span>
-                    </div>
-                    <input type="text" id="search-navbar" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+                    <form action="../../views/admin/index.php" method="GET">
+                        <button type="submit" class="absolute inset-y-0 flex items-center pointer-events-none start-0 ps-3">
+                            <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                            <span class="sr-only">Search icon</span>
+                        </button>
+                        <!-- Search input -->
+                        <input type="text" id="search-navbar" name="search" class="block w-full p-2 text-sm text-gray-900 border border-gray-300 rounded-lg ps-10 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search...">
+
+                    </form>
                 </div>
+
+
+
                 <button data-collapse-toggle="navbar-search" type="button" class="inline-flex items-center justify-center w-10 h-10 p-2 text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600" aria-controls="navbar-search" aria-expanded="false">
                     <span class="sr-only">Open main menu</span>
                     <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
@@ -62,8 +70,35 @@
                     </li>
                 </ul>
             </div>
-            <div class="items-center justify-between hidden w-full md:flex md:w-auto md:order-2">
-                <img class="w-10 h-10 rounded-full" src="../../../public/assets/avatar/avatar-default.png" alt="Rounded avatar">
+            <div class="flex items-center justify-between w-full pr-16 md:w-auto md:order-2">
+                <div class="relative inline-block text-left">
+                    <div>
+                        <button onclick="toggleDropdown()" type="button" id="menu-button" aria-expanded="true" aria-haspopup="true">
+                            <div class="flex items-center justify-between w-full md:w-auto md:order-2">
+                                <img class="w-10 h-10 rounded-full" src="../../../public/assets/avatar/avatar-default.png" alt="Rounded avatar">
+                            </div>
+                        </button>
+                    </div>
+                    <div id="dropdown" class=" absolute right-28 left-0
+                     z-[999] hidden w-56 mt-2 transition duration-300 ease-in-out origin-top-right bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none" role="menu" aria-orientation="vertical" aria-labelledby="menu-button" tabindex="-1">
+                        <div class="py-1" role="none">
+                            <?php if (isset($_SESSION['email'])) echo "<p>{$_SESSION['email']}</p>"; ?>
+                            <a href="../logout/index.php" role="menuitem" tabindex="-1" id="menu-item-2" class="px-4 py-2 text-sm text-red-600 dark:text-blue-500 hover:underline">Logout</a></a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
+
+
+    <script>
+        function toggleDropdown() {
+            var dropdown = document.getElementById("dropdown");
+            if (dropdown.classList.contains("hidden")) {
+                dropdown.classList.remove("hidden");
+            } else {
+                dropdown.classList.add("hidden");
+            }
+        }
+    </script>

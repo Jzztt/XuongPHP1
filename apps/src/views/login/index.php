@@ -10,6 +10,20 @@
 </head>
 
 <body>
+
+    <?php
+    if (isset($_POST['login'])) {
+        $email = $_POST['email'];
+        $password = $_POST['password'];
+        echo $email . " " . $password;
+        if ($email == 'admin@gmail.com' && $password == 'admin') {
+            session_start();
+            $_SESSION['email'] = $email;
+            header('Location: ../admin/index.php');
+        }
+    }
+
+    ?>
     <div class="flex flex-col justify-center min-h-full px-6 py-12 lg:px-8">
         <div class="sm:mx-auto sm:w-full sm:max-w-sm">
             <img class="w-auto h-10 mx-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="Your Company">
